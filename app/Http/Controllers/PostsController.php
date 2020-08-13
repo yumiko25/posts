@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('title', 'desc')->paginate(25);
         
         return view('posts.index',[
             'posts' => $posts,
@@ -44,6 +44,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'name' => 'required|max:20',
+            'work' => 'required|max:255',
+            'good_thing_content' => 'required|max:255',
+            'bad_thing_content' => 'required|max:255',
+            'advice' => 'required|max:255',
+        ]);
+        
         $post = new Post;
         $post->title = $request->title;
         $post->name = $request->name;
@@ -51,9 +60,7 @@ class PostsController extends Controller
         $post->good_thing_content = $request->good_thing_content;
         $post->bad_thing_content = $request->bad_thing_content;
         $post->advice = $request->advice;
-        $post->user_id = $request->user()->id;
         $post->save();
-        
         return redirect('/');
     }
 
@@ -96,10 +103,23 @@ class PostsController extends Controller
      */
     public function update(Request $request, $title)
     {
+       $request->validate([
+            'title' => 'required',
+            'name' => 'required|max:20',
+            'work' => 'required|max:255',
+            'good_thing_content' => 'required|max:255',
+            'bad_thing_content' => 'required|max:255',
+            'advice' => 'required|max:255',
+        ]);
+       
         $post = Post::findOrFail($title);
-        
-        $post->content = $request->content;
-        $post->save('/');
+        $post->title = $request->title;
+        $post->name = $request->name;
+        $post->work = $request->work;
+        $post->good_thing_content = $request->good_thing_content;
+        $post->bad_thing_content = $request->bad_thing_content;
+        $post->advice = $request->advice;
+        $post->save();
         
         return redirect('/');
     }
@@ -110,7 +130,7 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($title)
     {
          $post = Post::findOrFail($title);
          
