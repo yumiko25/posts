@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-6">
-            {!! Form::model($post, ['route' => ['posts.update', $post->title], 'method' => 'put']) !!}
+            {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
 
                 <div class="form-group">
                     {!! Form::label('title', 'タイトル:') !!}

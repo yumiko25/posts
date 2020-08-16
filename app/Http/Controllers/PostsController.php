@@ -54,6 +54,7 @@ class PostsController extends Controller
         ]);
         
         $post = new Post;
+        $post->user_id = $request->user()->id;
         $post->title = $request->title;
         $post->name = $request->name;
         $post->work = $request->work;
@@ -113,6 +114,7 @@ class PostsController extends Controller
         ]);
        
         $post = Post::findOrFail($title);
+        $post->user_id = $request->user()->id;
         $post->title = $request->title;
         $post->name = $request->name;
         $post->work = $request->work;
@@ -133,8 +135,10 @@ class PostsController extends Controller
     public function destroy($title)
     {
          $post = Post::findOrFail($title);
-         
+        
+        if (\Auth::id() === $post->user_id) { 
          $post->delete();
+        }
          
          return redirect('/');
     }

@@ -18,7 +18,7 @@
                 @foreach ($posts as $post)
                 <tr>
                     {{-- メッセージ詳細ページへのリンク --}}
-                    <td>{!! link_to_route('posts.show', $post->title, ['post' => $post->title]) !!}</td>
+                    <td>{!! link_to_route('posts.show', $post->title, ['post' => $post->id]) !!}</td>
                     <td>{{ $post->name }}</td>
                     <td>{{ $post->work }}</td>
                 </tr>
