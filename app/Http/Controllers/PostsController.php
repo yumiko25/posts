@@ -15,11 +15,23 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('title', 'desc')->paginate(25);
+        $data = [];
+        if (\Auth::check()) { 
+
+            $user = \Auth::user();
+            
+         $posts = Post::orderBy('title', 'desc')->paginate(25);
+         $data = [
+                'user' => $user,
+                'posts' => $posts,
+            ];
+        }
+        return view('welcome', $data);
         
-        return view('posts.index',[
-            'posts' => $posts,
-            ]);
+        
+        // return view('posts.index',[
+        //     'posts' => $posts,
+        //     ]);
     }
 
     /**

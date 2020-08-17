@@ -4,17 +4,18 @@
  @if (Auth::check())
         <div class="row">
         {{-- 投稿一覧 --}}
-            @include('posts.posts')
+            @include('posts.index')
         </div>
 @else
-    <header style="background-color:skyblue">保育・教育業界から次のステップへ</br>～保育・教育業界から異業種への転経験投稿サイト～
+    <header style="background-color:skyblue">
+        <h1>保育・教育業界から次のステップへ</br>～保育・教育業界から異業種への転経験投稿サイト～</h1>
            <div class = "text center">
             <nav id="global_navi">
                 <ul>
-                    <li class="current"><a href="posts.welcome">ホーム</a></li>
+                    <li class="current"><a href="welcome">ホーム</a></li>
                     <li><a href="posts.index">投稿一覧</a></li>
                     <li><a href="login">ログイン</a></li>
-                    <li><a href="signup.get">会員登録</a></li>
+                    <li><a href="signup">会員登録</a></li>
                 </ul>
             </nav>
             </div>
