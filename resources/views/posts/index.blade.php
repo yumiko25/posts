@@ -21,6 +21,12 @@
                     <td>{!! link_to_route('posts.show', $post->title, ['post' => $post->id]) !!}</td>
                     <td>{{ $post->name }}</td>
                     <td>{{ $post->work }}</td>
+                     @auth
+                        @if( ( $post->user_id ) === ( Auth::user()->id ) )
+                            <td><a href="{{ route('posts.edit') }}?id={{ $post->id }}">編集</a></td>
+                            <td><a href="{{ route('posts.delete') }}?id={{ $post->id }}">削除</a></td>
+                        @endif
+                    @endauth
                 </tr>
                 @endforeach
             </tbody>
