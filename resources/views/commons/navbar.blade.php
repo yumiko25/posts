@@ -17,15 +17,12 @@
                                        {{-- ログアウトへのリンク --}}
                            　           <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
                            　      </ul>
-                           　 </li>
-                                 
-                         @else
-                        {{-- ユーザ登録ページへのリンク --}}
-                        <li>{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
-                        {{-- ログインページへのリンク --}}
-                       <li>{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
-                        {{-- 投稿一覧　--}}
-                       <li>{!! link_to_route('', '投稿一覧', [], ['class' => 'nav-link']) !!}</li>
+                              </li>
+                         @else                
+                                       {{-- ユーザ登録ページへのリンク --}}
+                                       <li>{!! link_to_route('signup.get', '会員登録', [], ['class' => 'nav-link']) !!}</li>
+                                       {{-- ログインページへのリンク --}}
+                                      <li>{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                         @endif
                     </ul>
                 </div>
