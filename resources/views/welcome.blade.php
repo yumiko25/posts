@@ -10,7 +10,7 @@
     <header style="background-color:skyblue">
         <h1>保育・教育業界から次のステップへ</br>～保育・教育業界から異業種への転経験投稿サイト～</h1>
            <div class = "row">
-                <div class="col-sm-8">
+                <div class="gnavi__inner">
                 <nav id="global_navi">
                     <ul>
                         <li class="current"><a href="/">ホーム</a></li>
