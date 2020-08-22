@@ -7,10 +7,11 @@
             @include('posts.index')
         </div>
 @else
-    <header style = "background-color:#FFFF66">
-        <h1>保育・教育業界から次のステップへ</br>～保育・教育業界から異業種への転職経験投稿サイト～</h1>
-        
-    </header>
+  <div class="content">
+            <div class="title">
+                保育・教育業界から次のステップへ</br>～保育・教育業界から異業種への転職経験投稿サイト～
+            </div>
+ 
     <div class="row">
             <aside class="col-sm-4">
                 <h3>ホームページの概要</h3>
@@ -26,6 +27,5 @@
                 </div>
             </div>
     </div>
-
 @endif
 @endsection
