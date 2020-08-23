@@ -16,28 +16,28 @@ class PostsController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index','show']);
     }
     
     public function index()
     {
-        // $data = [];
-        // if (\Auth::check()) { 
+        $data = [];
+        if (\Auth::check()) { 
 
-        //     $user = \Auth::user();
+            $user = \Auth::user();
             
-        //  $posts = Post::orderBy('title', 'desc')->paginate(25);
-        //  $data = [
-        //         'user' => $user,
-        //         'posts' => $posts,
-        //     ];
-        // }
-        // return view('welcome', $data);
+        $posts = Post::orderBy('title', 'desc')->paginate(25);
+         $data = [
+                'user' => $user,
+                'posts' => $posts,
+            ];
+        }
+        return view('welcome', $data);
         
-        $posts = Post::All();
-        return view('posts.index',[
-            'posts' => $posts,
-            ]);
+      
+        // return view('posts.index',[
+        //     'posts' => $posts,
+        //     ]);
     }
 
     /**

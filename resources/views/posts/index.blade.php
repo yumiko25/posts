@@ -27,7 +27,9 @@
         </table>
     @endif
     
-   
+    {{-- ページネーションのリンク --}}
+    {{ $posts->links() }}
+
     
     {{-- 新規投稿作成ページへのリンク --}}
     {!! link_to_route('posts.create', '新規投稿', [], ['class' => 'btn btn-primary']) !!}
