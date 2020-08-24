@@ -8,18 +8,23 @@
             </div>
  
     <div class="row">
-            <aside class="col-sm-4">
+            <aside class="lead col-md-8">
                 <h3>ホームページの概要</h3>
+                <P>詳しい内容</P>
             </aside>
-            <div class="col-sm-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">あき</h3>
-                    </div>
-                    <div class="card-body">
-                       ４年目保育士
-                    </div>
-                </div>
+            <aside class="sidebar col-md-3 ml-auto">
+                <img src="img/hoikushi-hiyoko.png" alt="プロフィール画像" width="100px" height="100px" class="rounded-circle mx-auto d-block">
+                <h2>Aki</h2>
+                <p>保育士４年目です。日々ITの勉強中です。</p>
+                <!--<div class="card">-->
+                <!--    <div class="card-header">-->
+                <!--        <h3 class="card-title">あき</h3>-->
+                <!--    </div>-->
+                <!--    <div class="card">-->
+                <!--       ４年目保育士-->
+                <!--    </div>-->
+                <!--</div>-->
             </div>
+            
     </div>
 @endsection
