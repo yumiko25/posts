@@ -10,11 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
   return view('welcome');
 });
-Route::resource('posts', 'PostsController',['only' => ['create', 'store','show','edit','update','destroy']]);
+// Route::resource('posts', 'PostsController',['only' => ['create', 'store','show','edit','update','destroy']]);
 
 Auth::routes();
 
@@ -24,9 +23,11 @@ Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('sign
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('users', 'UsersController', ['only' => ['index','show']]);
-    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('posts', 'PostsController', ['only' => ['create','store', 'edit','update','destroy']]);
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
 });
+Route::resource('posts', 'PostsController', ['only' => ['index','show']]);
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');

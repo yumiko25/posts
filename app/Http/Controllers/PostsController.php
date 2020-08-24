@@ -14,31 +14,32 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index','show']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['index','show']);
+    // }
     
     public function index()
     {
-        $data = [];
-        if (\Auth::check()) { 
-
-            $user = \Auth::user();
-            
-        $posts = Post::orderBy('title', 'desc')->paginate(25);
-         $data = [
-                'user' => $user,
-                'posts' => $posts,
-            ];
-        }
-        return view('welcome', $data);
         
-      
-        // return view('posts.index',[
-        //     'posts' => $posts,
-        //     ]);
+        
+        $posts = Post::orderBy('title', 'desc')->paginate(25);   
+        return view('posts.index',[
+            'posts' => $posts,
+            ]);
     }
+    
+        // $data = [];
+        // if (\Auth::check()) { 
+
+        //     $user = \Auth::user();
+        
+        //  $data = [
+        //         'user' => $user,
+        //         'posts' => $posts,
+        //     ];
+        // }
+        // return view('welcome', $data);
 
     /**
      * Show the form for creating a new resource.
@@ -62,7 +63,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $this->validate($request,[
             'title' => 'required',
             'name' => 'required|max:20',
             'work' => 'required|max:255',
@@ -71,6 +72,14 @@ class PostsController extends Controller
             'advice' => 'required|max:255',
         ]);
         
+        // $request->user()->posts()->create([
+        //     'title' => $request->title,
+        //     'name' => $request->name,
+        //     'work' => $request->work,
+        //     'good_thing_content' => $request->good_thing_content,
+        //     'bad_thing_content' => $request->bad_thing_content,
+        //     'advice' => $request->advice
+        // ]);
         $post = new Post;
         $post->user_id = $request->user()->id;
         $post->title = $request->title;
@@ -80,7 +89,8 @@ class PostsController extends Controller
         $post->bad_thing_content = $request->bad_thing_content;
         $post->advice = $request->advice;
         $post->save();
-        return redirect('/');
+        return redirect('/home');
+        
     }
 
     /**
@@ -96,6 +106,15 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post,
             ]);
+        //   $post = Post::findOrFail($title);
+
+        // if (\Auth::id() === $post->user_id) {
+        //     return view('posts.show', [
+        //         'post' => $post,
+        //     ]);
+        
+        // }
+        //  return redirect('/');
     }
 
     /**
@@ -108,9 +127,14 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($title);
         
+        if (\Auth::id() === $post->user_id) {
+            
         return view('posts.edit', [
             'post' => $post,
             ]);
+        
+        }
+        return redirect('/');
     }
 
     /**
@@ -132,16 +156,20 @@ class PostsController extends Controller
         ]);
        
         $post = Post::findOrFail($title);
-        $post->user_id = $request->user()->id;
-        $post->title = $request->title;
-        $post->name = $request->name;
-        $post->work = $request->work;
-        $post->good_thing_content = $request->good_thing_content;
-        $post->bad_thing_content = $request->bad_thing_content;
-        $post->advice = $request->advice;
-        $post->save();
-        
-        return redirect('/');
+        if (\Auth::id() === $post->user_id) {
+            
+            $post->user_id = $request->user()->id;
+            $post->title = $request->title;
+            $post->name = $request->name;
+            $post->work = $request->work;
+            $post->good_thing_content = $request->good_thing_content;
+            $post->bad_thing_content = $request->bad_thing_content;
+            $post->advice = $request->advice;
+            $post->save();
+            
+            return redirect('/home');
+        }
+        return redirect('/home');
     }
 
     /**

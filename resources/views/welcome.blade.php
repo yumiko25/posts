@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
- @if (Auth::check())
-        <div class="row">
-        {{-- 投稿一覧 --}}
-            @include('posts.index')
-        </div>
-@else
+ 
   <div class="content">
             <div class="title">
                 保育・教育業界から次のステップへ</br>～保育・教育業界から異業種への転職経験投稿サイト～
@@ -27,5 +22,4 @@
                 </div>
             </div>
     </div>
-@endif
 @endsection
