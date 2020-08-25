@@ -2,6 +2,8 @@
 .content {
   width: 100%;
   min-width: 300px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  
 }
 
 .title {
@@ -10,8 +12,7 @@
   margin: auto;
   padding: 5px;
   text-align: center;
-  color: #A0522D	;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #A0522D;
   font-size: x-large;
   background-color: #FFFF66;
 　background-size: auto 100%;;
@@ -27,7 +28,7 @@
 }
 
 .lead:before,.lead:after {
-   content: '';
+    content: '';
     position: absolute;
     width:10px;
     height: 10px;
@@ -58,6 +59,34 @@
     border: dashed 2px white;
 }
 .sidebar p {
+    margin: 0; 
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+.secondary {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.secondary .secondary-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+}
+.secondary p {
     margin: 0; 
     padding: 0;
 }

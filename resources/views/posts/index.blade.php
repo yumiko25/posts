@@ -3,6 +3,8 @@
 @section('content')
 
 <h1>投稿一覧</h1>
+    
+    <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
 
     @if (count($posts) > 0)
         <table class="table table-striped">
@@ -33,6 +35,10 @@
     
     {{-- 新規投稿作成ページへのリンク --}}
     {!! link_to_route('posts.create', '新規投稿', [], ['class' => 'btn btn-primary']) !!}
-
+    
+    <div class="secondary">
+    <span class="secondary-title">お願い</span>
+    <p>投稿を作成する際には、会員登録・ログインをお願いします。</p>
+</div>
 
 @endsection
