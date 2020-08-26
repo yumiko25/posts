@@ -3,9 +3,30 @@
 @section('content')
 
 <h1>投稿一覧</h1>
-    
-    <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
 
+  <div class="form-group">  
+    <form action="{{ route('home') }}" method="get">
+      <input type="text" class="form-control" name="cond_title" placeholder="検索したいキーワードを入力してください">
+    </form>
+    　<input type="submit" value="検索" class="btn btn-info">
+　</div>
+　
+ <!--<div class="container-fluid">-->
+ <!--       <div class="row">-->
+ <!--           <div class="col-sm-4" style="padding:20px 0; padding-left:0px;">-->
+ <!--           <form class="form-inline" action="{{url('/home')}}">-->
+ <!--             <div class="form-group">-->
+ <!--             <input type="text" name="keyword" value="" class="form-control" placeholder="検索したいキーワードを入力してください">-->
+ <!--             </div>-->
+ <!--             <input type="submit" value="検索" class="btn btn-info">-->
+ <!--           </form>-->
+ <!--           </div>-->
+             
+           
+    <!--    </div>-->
+    <!--</div>-->
+    
+   
     @if (count($posts) > 0)
         <table class="table table-striped">
             <thead>

@@ -13,19 +13,20 @@
 Route::get('/', function () {
   return view('welcome');
 });
-// Route::resource('posts', 'PostsController',['only' => ['create', 'store','show','edit','update','destroy']]);
+
 
 Auth::routes();
 
 Route::get('/home', 'PostsController@index')->name('home');
 
+
+
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('posts', 'PostsController', ['only' => ['create','store', 'edit','update','destroy']]);
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('posts', 'PostsController', ['only' => ['create','store', 'edit','update','store','destroy']]);
+    // Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
 });
 Route::resource('posts', 'PostsController', ['only' => ['index','show']]);
 
