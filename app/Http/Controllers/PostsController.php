@@ -22,38 +22,19 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         
-        
         $posts = Post::orderBy('title', 'desc')->paginate(25);   
-        return view('posts.index',[
-            'posts' => $posts,
-            ]);
-        
-        // $keyword = $request->input('keyword');
-        // $query = Post::query();
-        // if(!empty($keyword))
-        // {
-        //   $query->where('title','like','%'.$keyword.'%');
-        // }
-     
-        // $data = $query->orderBy('created_at','desc')->paginate(10);
-        // return view('post.index')->with('data',$data)
-        // ->with('keyword',$keyword);
-        
-        // $query = Post::query();
-
-        // $keyword = $request->input('keyword');
-        // if (!empty($keyword)) {
-        //     $query->where('title', 'like', '%' . $keyword . '%');
-        // }
-
-        // $perpage = $request->input('perpage', 10);    
-        
-      $cond_title = $request->cond_title;
+        $cond_title = $request->cond_title;
                 if ($cond_title != '') {
                     $posts = Post::where('title','like','%'.$cond_title.'%')->orderBy('created_at','desc')->paginate(15);
                 }else {
-                     $posts = Post::orderBy('created_at','desc')->paginate(15);
+                    $posts = Post::orderBy('created_at','desc')->paginate(15);
                  }
+        return view('posts.index',[
+            'posts' => $posts,
+            
+            ]);
+        
+        
     }
     
         // $data = [];

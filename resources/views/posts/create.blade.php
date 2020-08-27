@@ -5,8 +5,7 @@
     <h1>投稿の作成</h1>
  </div>
     <div class="row">
-        <!--<div class="col-10 m-auto">-->
-        <div class="col-sm-9 offset-sm-3">
+        <div class="col-md-10 m-auto">
             {!! Form::model($post, ['route' => 'posts.store']) !!}
 
                 <div class="form-group">
@@ -28,11 +27,11 @@
                 </div>
                 <div class="form-group">    
                     {!! Form::label('bad_thing_content', '転職をして気になったこと:') !!}
-                    {!! Form::text('bad_thing_content', null, ['class' => 'form-control', 'size' => '15x3']) !!}
+                    {!! Form::textarea('bad_thing_content', null, ['class' => 'form-control', 'size' => '15x3']) !!}
                 </div>
                 <div class="form-group">    
                     {!! Form::label('advice', 'アドバイス:') !!}
-                    {!! Form::text('advice', null, ['class' => 'form-control', 'size' => '15x3']) !!}
+                    {!! Form::textarea('advice', null, ['class' => 'form-control', 'size' => '15x3']) !!}
                 </div>
                
                 {!! Form::submit('投稿', ['class' => 'btn btn-primary']) !!}

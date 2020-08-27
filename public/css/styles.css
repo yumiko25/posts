@@ -90,3 +90,16 @@ h2 {
     margin: 0; 
     padding: 0;
 }
+
+.btn {
+    margin: 5px;
+}
+
+.table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.table tr th:nth-child(1) {
+            width: 30%;
+        }
