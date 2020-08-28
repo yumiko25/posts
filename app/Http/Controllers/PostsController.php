@@ -33,22 +33,9 @@ class PostsController extends Controller
             'posts' => $posts,
             
             ]);
-        
-        
     }
     
-        // $data = [];
-        // if (\Auth::check()) { 
-
-        //     $user = \Auth::user();
         
-        //  $data = [
-        //         'user' => $user,
-        //         'posts' => $posts,
-        //     ];
-        // }
-        // return view('welcome', $data);
-
     /**
      * Show the form for creating a new resource.
      *
@@ -82,14 +69,7 @@ class PostsController extends Controller
             'advice' => 'required|max:255',
         ]);
         
-        // $request->user()->posts()->create([
-        //     'title' => $request->title,
-        //     'name' => $request->name,
-        //     'work' => $request->work,
-        //     'good_thing_content' => $request->good_thing_content,
-        //     'bad_thing_content' => $request->bad_thing_content,
-        //     'advice' => $request->advice
-        // ]);
+        
         $post = new Post;
         $post->user_id = $request->user()->id;
         $post->title = $request->title;
@@ -116,15 +96,7 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post,
             ]);
-        //   $post = Post::findOrFail($title);
-
-        // if (\Auth::id() === $post->user_id) {
-        //     return view('posts.show', [
-        //         'post' => $post,
-        //     ]);
         
-        // }
-        //  return redirect('/');
     }
 
     /**
@@ -137,13 +109,13 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($title);
         
-        if (\Auth::id() === $post->user_id) {
+        if (\Auth::user()->id === $post->user_id) {
             
         return view('posts.edit', [
             'post' => $post,
-            ]);
-        
-        }
+            ]);}else{
+                
+            }
         return redirect('/');
     }
 
@@ -192,8 +164,11 @@ class PostsController extends Controller
     {
          $post = Post::findOrFail($title);
         
-        if (\Auth::id() === $post->user_id) { 
+        if (\Auth::user()->id === $post->user_id) { 
          $post->delete();
+        }else{
+         
+
         }
          
          return redirect('/');

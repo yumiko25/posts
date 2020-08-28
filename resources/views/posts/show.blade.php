@@ -33,12 +33,18 @@
                     </tr>
                 </table>
     {{-- 投稿編集ページへのリンク --}}
+    @if(Auth::user()->id === $post->user_id)
     {!! link_to_route('posts.edit', 'この投稿を編集', ['post' => $post->id], ['class' => 'btn btn-light']) !!}
-
+    @csrf
+    @endif
+    
     {{-- 投稿削除フォーム --}}
-    {!! Form::model($post, ['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
+    @if(Auth::user()->id === $post->user_id)
+	    {!! Form::model($post, ['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
+        @csrf
         {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
+        {!! Form::close() !!}
+        @endif
         </div>
      </div>    
          
