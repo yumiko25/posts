@@ -15,7 +15,7 @@
             <aside class="sidebar col-md-3 ml-auto">
                 <img src="img/hoikushi-hiyoko.png" alt="プロフィール画像" width="100px" height="100px" class="rounded-circle mx-auto d-block">
                 <h2>Aki</h2>
-                <p>小・中規模保育園勤務を経験し、現在保育士４年目。日々ITの勉強中です。<br>異業種への転職を考えている方々に情報収集をする際に役立てて欲しいと思い、この投稿サイトを制作しました。</p>
+                <p>小・中規模保育園勤務を経験し、保育士経験約3年。日々ITの勉強中です。<br>異業種への転職を考えている方々に情報収集をする際に役立てて欲しいと思い、この投稿サイトを制作しました。</p>
             </div>
             
     </div>
