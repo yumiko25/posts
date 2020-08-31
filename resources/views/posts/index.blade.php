@@ -9,12 +9,12 @@
       <div class="col-md-6 m-auto">
           <div class="form-group">  
             <form action="{{ route('home') }}" method="get">
-              <input type="text" class="form-control" name="cond_title" placeholder="検索したいキーワードを入力してください">
+              <input type="text" class="form-control" name="cond_title" value="{{ ($cond_title) }}"  placeholder="検索したいキーワードを入力してください">
         　     <input type="submit" value="検索" class="btn btn-info">
             </form>
     　     </div>
 　    </div>
-   
+  
    
         <div class="col-md-10 m-auto">
             @if (count($posts) > 0)

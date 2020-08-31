@@ -31,7 +31,7 @@ class PostsController extends Controller
                  }
         return view('posts.index',[
             'posts' => $posts,
-            
+            'cond_title' =>$cond_title
             ]);
     }
     
@@ -96,7 +96,14 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post,
             ]);
-        
+        // if (\Auth::user()->id === $post->user_id) {
+        //     return view('posts.show', [
+        //     'post' => $post,
+        //     ]);
+        // }else{
+         
+
+        // }
     }
 
     /**
@@ -113,10 +120,11 @@ class PostsController extends Controller
             
         return view('posts.edit', [
             'post' => $post,
-            ]);}else{
-                
-            }
+            ]);
+            
+        }
         return redirect('/');
+            
     }
 
     /**
@@ -166,11 +174,8 @@ class PostsController extends Controller
         
         if (\Auth::user()->id === $post->user_id) { 
          $post->delete();
-        }else{
-         
-
         }
+         return redirect('/home');
          
-         return redirect('/');
     }
 }
