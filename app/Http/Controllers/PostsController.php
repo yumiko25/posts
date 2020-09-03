@@ -96,14 +96,6 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post,
             ]);
-        // if (\Auth::user()->id === $post->user_id) {
-        //     return view('posts.show', [
-        //     'post' => $post,
-        //     ]);
-        // }else{
-         
-
-        // }
     }
 
     /**
@@ -117,7 +109,6 @@ class PostsController extends Controller
         $post = Post::findOrFail($title);
         
         if (\Auth::user()->id === $post->user_id) {
-            
         return view('posts.edit', [
             'post' => $post,
             ]);

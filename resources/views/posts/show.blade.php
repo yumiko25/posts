@@ -39,7 +39,6 @@
         @csrf
         @endif
     @endauth
- 
     
     {{-- 投稿削除フォーム --}}
     @auth
